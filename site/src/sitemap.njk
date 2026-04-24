@@ -1,0 +1,32 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {# Static top-level pages #}
+  {% set staticPages = [
+    {"url": "/", "priority": "1.0"},
+    {"url": "/projects/", "priority": "0.9"},
+    {"url": "/emergency-repairs/", "priority": "0.8"},
+    {"url": "/refurbishment/", "priority": "0.8"},
+    {"url": "/bathroom-creation/", "priority": "0.8"},
+    {"url": "/contact/", "priority": "0.7"},
+    {"url": "/privacy-policy/", "priority": "0.3"}
+  ] %}
+  {% for p in staticPages %}
+  <url>
+    <loc>{{ site.url }}{{ p.url }}</loc>
+    <priority>{{ p.priority }}</priority>
+  </url>
+  {% endfor %}
+
+  {# Project case studies #}
+  {% for post in collections.projects %}
+  <url>
+    <loc>{{ site.url }}{{ post.url }}</loc>
+    <lastmod>{{ post.date | dateToRfc3339 }}</lastmod>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+</urlset>

@@ -1,0 +1,17 @@
+{
+  "name": "lvbathrooms",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bathrooms by LV — static website",
+  "scripts": {
+    "clean": "rimraf _site",
+    "build": "eleventy",
+    "dev": "eleventy --serve --port=8080",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.2",
+    "rimraf": "^5.0.5"
+  }
+}

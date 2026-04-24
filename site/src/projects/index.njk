@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+permalink: /projects/
+title: "Projects"
+seo_title: "Our Projects - Bathrooms by LV"
+seo_description: "A gallery of completed bathroom, en-suite and cloakroom projects by Bathrooms by LV in Warrington and the North West."
+---
+<article class="page">
+  <header class="page-hero">
+    <h1>Projects</h1>
+    <p class="page-hero__subtitle">A selection of completed bathrooms, en-suites and cloakrooms from recent years.</p>
+  </header>
+
+  <div class="page-body">
+    <ul class="recent-projects__grid" style="padding-left:0; list-style:none;">
+    {% for post in collections.projects %}
+      <li>
+        <a href="{{ post.url }}" class="project-card">
+          {% if post.data.og_image %}
+          <img src="{{ post.data.og_image }}" alt="" loading="lazy">
+          {% endif %}
+          <h3>{{ post.data.title }}</h3>
+          <p class="project-card__date">{{ post.date | monthYear }}</p>
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</article>

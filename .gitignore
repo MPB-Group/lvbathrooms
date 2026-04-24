@@ -1,0 +1,6 @@
+# Node + build output (inside site/)
+site/node_modules/
+site/_site/
+.DS_Store
+*.log
+.env

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ seo_title or title or site.title }}</title>
+    {% if seo_description or site.description %}
+    <meta name="description" content="{{ seo_description or site.description }}">
+    {% endif %}
+    <meta property="og:title" content="{{ seo_title or title or site.title }}">
+    <meta property="og:type" content="{{ og_type or 'website' }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    {% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
+    <meta property="og:description" content="{{ seo_description or site.description }}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/site.css">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+  </head>
+  <body>
+    {% include "partials/nav.njk" %}
+
+    <main>
+      {{ content | safe }}
+    </main>
+
+    {% include "partials/footer.njk" %}
+
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

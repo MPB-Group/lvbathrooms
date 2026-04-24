@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+og_type: article
+---
+<article class="project">
+  <header class="project-hero">
+    {% if og_image %}
+    <img class="project-hero__image" src="{{ og_image }}" alt="{{ title }}">
+    {% endif %}
+    <div class="project-hero__text">
+      <p class="project-hero__date">{{ page.date | ukDate }}</p>
+      <h1>{{ title }}</h1>
+      {% if seo_description %}<p class="project-hero__subtitle">{{ seo_description }}</p>{% endif %}
+    </div>
+  </header>
+
+  <div class="project-body">
+    {{ content | safe }}
+  </div>
+
+  {% if gallery_dir %}
+  <section class="project-gallery" aria-label="Project photos">
+    <h2>Photos</h2>
+    {% gallery gallery_dir %}
+  </section>
+  {% endif %}
+
+  <nav class="project-nav" aria-label="More projects">
+    <a href="/projects/" class="button button--ghost">← All projects</a>
+  </nav>
+</article>

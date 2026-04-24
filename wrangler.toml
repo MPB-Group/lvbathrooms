@@ -1,0 +1,27 @@
+# Cloudflare Pages configuration for MPB-Group/lvbathrooms
+#
+# Cloudflare reads this file when the repo is connected to a Pages project.
+# Settings here are mirrored in the Pages dashboard (project → Settings)
+# but this file makes them reproducible in code.
+#
+# Docs: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+name = "lvbathrooms"
+compatibility_date = "2025-10-01"
+pages_build_output_dir = "site/_site"
+
+# Environment variables needed at build time.
+# Set the real Node version used by your Pages project in the dashboard:
+#   Settings → Environment variables → NODE_VERSION = 20
+[vars]
+SITE_URL = "https://lvbathrooms.co.uk"
+
+# Per-environment overrides.  Preview deployments (PR branches) can use
+# a separate base URL; production uses the apex domain.
+[env.production]
+[env.production.vars]
+SITE_URL = "https://lvbathrooms.co.uk"
+
+[env.preview]
+[env.preview.vars]
+SITE_URL = "https://preview.lvbathrooms.pages.dev"

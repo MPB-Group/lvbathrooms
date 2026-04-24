@@ -1,0 +1,165 @@
+---
+layout: layouts/base.njk
+---
+{# The homepage has a custom structure mirroring (and cleaning up) the
+   Elementor-built home page on the legacy WordPress site.  Content comes
+   from _data/site.js where possible, with copy supplied inline here.  #}
+
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">We make beautiful</p>
+    <h1 class="hero__headline">
+      <span class="hero__before">We make beautiful</span>
+      <span class="hero__rotator" aria-live="polite">
+        <span class="hero__word">Bathrooms.</span>
+        <span class="hero__word">Wet Rooms.</span>
+        <span class="hero__word">Powder Rooms.</span>
+        <span class="hero__word">En Suites.</span>
+        <span class="hero__word">Cloakrooms.</span>
+      </span>
+    </h1>
+    <p class="hero__copy">
+      Don&rsquo;t believe the reviews or the referral that brought you here.
+      Call us, meet us, and understand why we&rsquo;re the go-to contact for
+      most local businesses that demand a higher standard.
+      <strong>Proud to be the best, not the biggest.</strong>
+    </p>
+    <a href="#services" class="button button--accent">Our services</a>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="intro__inner">
+    <p>We could fill this space with beautiful tiles and fancy bathroom furniture, but that would detract from our message.</p>
+    <p>We can supply and install anything you&rsquo;ve seen on Instagram, Pinterest or any other social platform. More importantly, we can steer you away from inferior products and source premium fixtures and fittings at trade prices &mdash; without the mark-up you get from suppliers pushing endorsed brands.</p>
+    <p><strong>Honest, flexible, experienced.</strong></p>
+  </div>
+</section>
+
+<section class="rooms" aria-labelledby="rooms-heading">
+  <h2 id="rooms-heading" class="visually-hidden">Types of bathroom project</h2>
+  <div class="rooms__grid">
+    <article class="room-card">
+      <h3>Bathroom</h3>
+      <p>Your whole family uses your bathroom every day. It should be the standard to which every other room aspires — huge bath, walk-in wet room, whatever matches your lifestyle. Choose your chinaware from our range or yours; we&rsquo;ll complement it.</p>
+    </article>
+    <article class="room-card">
+      <h3>Cloakroom</h3>
+      <p>The space guests will see. When entertaining or relaxing, nobody should have to take the stairs to find facilities of a high enough standard — this is where a small space can make a big impression.</p>
+    </article>
+    <article class="room-card">
+      <h3>En Suite</h3>
+      <p>A private, tranquil space designed for your relaxation alone. We&rsquo;ve created en suites from unused closets, box rooms, and oddly-shaped loft corners — small footprints, huge impact.</p>
+    </article>
+  </div>
+</section>
+
+<section class="counters" aria-labelledby="counters-heading">
+  <h2 id="counters-heading" class="visually-hidden">Our track record</h2>
+  <ul class="counters__list">
+    {% for c in site.counters %}
+    <li class="counter">
+      <span class="counter__value" data-count-to="{{ c.value }}">{{ c.value }}</span><span class="counter__plus">+</span>
+      <span class="counter__label">{{ c.label }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section id="services" class="services" aria-labelledby="services-heading">
+  <div class="services__header">
+    <h2 id="services-heading">What we do</h2>
+    <p>Three distinct services, one obsessive standard of finish.</p>
+  </div>
+  <div class="services__grid">
+    {% for s in site.services %}
+    <article class="service-card">
+      <h3>{{ s.title }}</h3>
+      <p>{{ s.tagline }}</p>
+      <a href="{{ s.href }}" class="button button--ghost">Find out more</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="about" aria-labelledby="about-heading">
+  <div class="about__inner">
+    <div class="about__text">
+      <h2 id="about-heading">Nearly two decades of experience</h2>
+      <p>An &ldquo;expert&rdquo; is defined as ten thousand hours. We believe an expert is someone who understands the needs and dreams of their customer and exceeds every expectation without compromise.</p>
+      <p>Each to their own: modern or traditional, ceramic or porcelain, we&rsquo;ll conform and deliver to your exact specification. Unfortunately we can&rsquo;t resist speaking up if we think it could be better — honesty is our policy for better or worse.</p>
+      <p>Warrington-based, with a great reputation and a network of trusted experts at our disposal.</p>
+    </div>
+    <figure class="about__image">
+      <img src="/images/van/72684889_10217573732749630_3266989181762535424_o.jpg" alt="The Bathrooms by LV van outside a customer's home" width="960" height="960">
+    </figure>
+  </div>
+</section>
+
+<section class="testimonials" aria-labelledby="testimonials-heading">
+  <h2 id="testimonials-heading">What our customers say</h2>
+  <div class="testimonials__grid">
+    {% for t in site.testimonials %}
+    <figure class="testimonial">
+      <blockquote>{{ t.body }}</blockquote>
+      <figcaption>
+        <strong>{{ t.name }}</strong>
+        {% if t.location %}<span>, {{ t.location }}</span>{% endif %}
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="recent-projects" aria-labelledby="recent-heading">
+  <div class="recent-projects__header">
+    <h2 id="recent-heading">Recent projects</h2>
+    <a href="/projects/" class="link-arrow">View all projects &rarr;</a>
+  </div>
+  <ul class="recent-projects__grid">
+    {%- for post in collections.projects | reverse | slice(0, 3) | first -%}
+    {# see posts loop below #}
+    {%- endfor -%}
+    {% set recent = collections.projects | reverse %}
+    {% for post in recent.slice(0, 3) %}
+    <li>
+      <a href="{{ post.url }}" class="project-card">
+        {% if post.data.og_image %}
+        <img src="{{ post.data.og_image }}" alt="" loading="lazy">
+        {% endif %}
+        <h3>{{ post.data.title }}</h3>
+        <p class="project-card__date">{{ post.date | monthYear }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section id="contact-cta" class="contact-cta">
+  <div class="contact-cta__inner">
+    <h2>Get in touch</h2>
+    <ul class="contact-cta__details">
+      <li>
+        <span class="contact-cta__label">Location</span>
+        <span>{{ site.location }}</span>
+      </li>
+      <li>
+        <span class="contact-cta__label">Email</span>
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </li>
+      <li>
+        <span class="contact-cta__label">Mobile</span>
+        <a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone }}</a>
+      </li>
+      <li>
+        <span class="contact-cta__label">Landline</span>
+        <a href="tel:{{ site.landline | replace(' ', '') }}">{{ site.landline }}</a>
+      </li>
+    </ul>
+    <a href="/contact/" class="button button--accent">Request a free quote</a>
+  </div>
+</section>
+
+{% block scripts %}
+<script src="/assets/js/hero.js" defer></script>
+{% endblock %}

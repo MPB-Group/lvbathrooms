@@ -1,0 +1,53 @@
+# Cloudflare Pages _redirects
+# Format: <source>  <destination>  <status>
+# Cloudflare copies this file verbatim from the build output root.
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# --- Old WordPress post permalinks → new /projects/ structure ---
+# The legacy site published case studies at /{slug} (root level).
+# The rebuild moves them under /projects/{slug}/ — these 301s preserve
+# inbound links and any accumulated SEO.
+
+/all-the-bathroom-mod-cons-for-hayley-and-mike   /projects/all-the-bathroom-mod-cons-for-hayley-and-mike/   301
+/gorgeous-bathroom-for-bruce-and-mandy           /projects/gorgeous-bathroom-for-bruce-and-mandy/           301
+/herringbone-tile-finish-and-underfloor-heating  /projects/herringbone-tile-finish-and-underfloor-heating/  301
+/three-elegant-bathrooms-for-the-wainwright-family /projects/three-elegant-bathrooms-for-the-wainwright-family/ 301
+/stunning-wetroom-for-anthony-and-chris          /projects/stunning-wetroom-for-anthony-and-chris/          301
+/epping-up-to-deliver-a-quality-bathroom         /projects/epping-up-to-deliver-a-quality-bathroom/         301
+/stunning-shower-room-for-julie-and-neal         /projects/stunning-shower-room-for-julie-and-neal/         301
+/a-shower-room-and-bathroom-for-ste-and-jo       /projects/a-shower-room-and-bathroom-for-ste-and-jo/       301
+/two-beautiful-bathrooms-for-sharon-and-lee      /projects/two-beautiful-bathrooms-for-sharon-and-lee/      301
+/brand-new-bathroom-for-the-ecclestone-family    /projects/brand-new-bathroom-for-the-ecclestone-family/    301
+/bathroom-creation-for-the-carters               /projects/bathroom-creation-for-the-carters/               301
+/amazing-bathrooms-for-melanie-and-chris         /projects/amazing-bathrooms-for-melanie-and-chris/         301
+/every-bathroom-for-ken-and-lisa                 /projects/every-bathroom-for-ken-and-lisa/                 301
+/ste-tracey-stunning-bathroom                    /projects/ste-tracey-stunning-bathroom/                    301
+/janes-project                                   /projects/janes-project/                                   301
+/hi-tech-bathrooms                               /projects/hi-tech-bathrooms/                               301
+/traditional-bathrooms                           /projects/traditional-bathrooms/                           301
+/our-picture-gallery-of-completed-projects       /projects/our-picture-gallery-of-completed-projects/       301
+
+# --- Legacy service-page slugs (the broken homepage buttons pointed here) ---
+/bathroom-emergency-repairs-maintenance   /emergency-repairs/   301
+/custom-featured-image-height             /refurbishment/       301
+
+# --- Blog → projects ---
+/blog                  /projects/   301
+/blog/*                /projects/   301
+
+# --- Author / category / tag archive pages from WP ---
+/author/liam_v         /projects/   301
+/author/*              /projects/   301
+/category/blog         /projects/   301
+/category/projects     /projects/   301
+/category/*            /projects/   301
+/tag/bathrooms         /projects/   301
+/tag/en-suites         /projects/   301
+/tag/*                 /projects/   301
+
+# --- Legacy WordPress feeds ---
+/feed                  /            301
+/feed/                 /            301
+/?feed=*               /            301
+
+# --- Trailing-slash normalisation is handled automatically by Cloudflare Pages ---
