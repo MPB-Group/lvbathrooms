@@ -5,7 +5,7 @@ og_type: article
 <article class="project">
   <header class="project-hero">
     {% if og_image %}
-    <img class="project-hero__image" src="{{ og_image | url }}" alt="{{ title }}">
+    <img class="project-hero__image" src="{{ og_image }}" alt="{{ title }}">
     {% endif %}
     <div class="project-hero__text">
       <p class="project-hero__date">{{ page.date | ukDate }}</p>
@@ -26,6 +26,6 @@ og_type: article
   {% endif %}
 
   <nav class="project-nav" aria-label="More projects">
-    <a href="{{ '/projects/' | url }}" class="button button--ghost">← All projects</a>
+    <a href="/projects/" class="button button--ghost">← All projects</a>
   </nav>
 </article>
