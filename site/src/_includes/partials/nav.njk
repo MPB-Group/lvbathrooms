@@ -1,6 +1,6 @@
 <header class="site-header">
-  <a href="/" class="site-header__brand" aria-label="Bathrooms by LV — home">
-    <img src="/images/logo/Bathrooms-By-LV-FINAL.png" alt="Bathrooms by LV" width="240" height="97">
+  <a href="{{ '/' | url }}" class="site-header__brand" aria-label="Bathrooms by LV — home">
+    <img src="{{ '/images/logo/Bathrooms-By-LV-FINAL.png' | url }}" alt="Bathrooms by LV" width="240" height="97">
   </a>
 
   <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
@@ -15,7 +15,7 @@
       {% for item in site.nav %}
         {% set isCurrent = (page.url == item.url) or (item.url != '/' and item.url != '/#services' and page.url.indexOf(item.url) == 0) %}
         <li>
-          <a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>
+          <a href="{% if item.url.startsWith('/#') %}{{ item.url }}{% else %}{{ item.url | url }}{% endif %}"{% if isCurrent %} aria-current="page"{% endif %}>
             {{ item.label }}
           </a>
         </li>
